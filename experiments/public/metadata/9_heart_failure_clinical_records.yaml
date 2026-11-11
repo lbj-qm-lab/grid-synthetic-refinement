@@ -1,0 +1,51 @@
+# 9_heart_failure_clinical_records — Heart Failure Clinical Records, UCI 519; analysis file written by experiments/public/fetch_data.py.
+# Used by main.py --metadata. Predictors not listed under `categorical` are continuous.
+
+# column: allowed codes (generated values are snapped to these)
+categorical:
+  anaemia: [0, 1]
+  diabetes: [0, 1]
+  high_blood_pressure: [0, 1]
+  sex: [0, 1]
+  smoking: [0, 1]
+
+# Tuned on the full cohort with Optuna; `tuning` is a record of the search (n_iter = training-step budget from which
+# `epochs` was derived) and is not read by the code. A generator without an entry uses grid.config.DEEP_GENERATOR_DEFAULTS.
+generators:
+  ctgan:
+    params:
+      batch_size: 100
+      embedding_dim: 64
+      discriminator_steps: 2
+      epochs: 500
+      generator_dim: [256, 256]
+      discriminator_dim: [256, 256]
+      generator_lr: 0.0006226327873955043
+      discriminator_lr: 0.0006226327873955043
+      generator_decay: 1.0e-06
+      discriminator_decay: 1.0e-06
+      pac: 10
+    tuning: {n_iter: 500, objective: 0.7728668806161747, n_trials: 30, n_complete: 30}
+  tvae:
+    params:
+      batch_size: 50
+      embedding_dim: 64
+      loss_factor: 2.278610732037011
+      epochs: 500
+      compress_dims: [256, 256]
+      decompress_dims: [256, 256]
+    tuning: {n_iter: 2000, objective: 0.7599620667522464, n_trials: 30, n_complete: 30}
+  copulagan:
+    params:
+      batch_size: 50
+      embedding_dim: 128
+      discriminator_steps: 1
+      epochs: 167
+      generator_dim: [256, 256, 256]
+      discriminator_dim: [256, 256, 256]
+      generator_lr: 0.0005350046281016072
+      discriminator_lr: 0.0005350046281016072
+      generator_decay: 1.0e-06
+      discriminator_decay: 1.0e-06
+      pac: 10
+    tuning: {n_iter: 500, objective: 0.7627243902439024, n_trials: 30, n_complete: 30}

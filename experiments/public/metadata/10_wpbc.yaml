@@ -1,0 +1,46 @@
+# 10_wpbc — Breast Cancer Wisconsin (Prognostic), UCI 16; analysis file written by experiments/public/fetch_data.py.
+# Used by main.py --metadata. Predictors not listed under `categorical` are continuous.
+
+# column: allowed codes (generated values are snapped to these)
+categorical: {}
+
+# Tuned on the full cohort with Optuna; `tuning` is a record of the search (n_iter = training-step budget from which
+# `epochs` was derived) and is not read by the code. A generator without an entry uses grid.config.DEEP_GENERATOR_DEFAULTS.
+generators:
+  ctgan:
+    params:
+      batch_size: 100
+      embedding_dim: 16
+      discriminator_steps: 1
+      epochs: 2000
+      generator_dim: [128]
+      discriminator_dim: [128]
+      generator_lr: 0.0009235624876093141
+      discriminator_lr: 0.0009235624876093141
+      generator_decay: 1.0e-06
+      discriminator_decay: 1.0e-06
+      pac: 10
+    tuning: {n_iter: 2000, objective: 0.5820434227330779, n_trials: 30, n_complete: 30}
+  tvae:
+    params:
+      batch_size: 50
+      embedding_dim: 32
+      loss_factor: 4.599290831435393
+      epochs: 667
+      compress_dims: [32, 32]
+      decompress_dims: [32, 32]
+    tuning: {n_iter: 2000, objective: 0.5694380587484036, n_trials: 30, n_complete: 30}
+  copulagan:
+    params:
+      batch_size: 20
+      embedding_dim: 64
+      discriminator_steps: 1
+      epochs: 167
+      generator_dim: [32, 32, 32]
+      discriminator_dim: [32, 32, 32]
+      generator_lr: 0.00015758083151515227
+      discriminator_lr: 0.00015758083151515227
+      generator_decay: 1.0e-06
+      discriminator_decay: 1.0e-06
+      pac: 10
+    tuning: {n_iter: 1000, objective: 0.5793690932311621, n_trials: 30, n_complete: 30}

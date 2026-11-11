@@ -1,0 +1,15 @@
+[build-system]
+requires = ["setuptools>=61"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "grid-synthetic-refinement"
+version = "1.0.0"
+description = "GRID: gradient-based refinement of imbalanced synthetic tabular data"
+readme = "README.md"
+license = {file = "LICENSE"}
+requires-python = ">=3.10"
+# Pinned versions used for the paper: requirements.txt
+
+[tool.setuptools.packages.find]
+include = ["grid*"]

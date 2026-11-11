@@ -1,0 +1,21 @@
+# Versions used for the paper (Python 3.10.18, CUDA 12.8, NVIDIA GPU).
+# Install torch for your CUDA version first if needed, e.g.
+#   pip install torch==2.9.1 --index-url https://download.pytorch.org/whl/cu128
+numpy==2.2.6
+pandas==2.2.2
+scipy==1.15.3
+scikit-learn==1.6.0
+imbalanced-learn==0.14.0
+torch==2.9.1
+sdv==1.29.1
+ctgan==0.11.1
+rdt==1.18.2
+copulas==0.12.3
+tabpfn==6.0.6
+pytabkit==1.7.2
+xgboost==3.1.0
+lightning==2.5.5
+joblib==1.5.2
+tqdm==4.67.1
+pyyaml==6.0.3
+ucimlrepo==0.0.7

@@ -1,0 +1,12 @@
+# downloaded data, generator cache and run outputs
+/data/
+/cache/
+/results/
+# written by pytabkit / Lightning during training
+lightning_logs/
+lightning_logs_trash_*/
+rtdl_checkpoints/
+__pycache__/
+*.pyc
+# pip install -e .
+*.egg-info/
